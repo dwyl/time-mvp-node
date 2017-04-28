@@ -3,14 +3,66 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Time MVP</title>
     <link rel="shortcut icon" type="image/png" href="http://www.favicon.cc/logo3d/818488.png"/>
-  </head>
-  <body style="margin: 0 1em;">
-    <div id="main">
-      <h1>Start Tracking <em>Exactly How/Where Time Goes!</em></h1>
-    </div>
-    <!-- Load the QUnit Testing Framework from CDN - this is the important bit ... -->
-    <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.6.1/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="client.js"></script> <!-- load "client" application  -->
+  </head>
+  <body>
+    <div id="main" class="near-black">
+      <div id="current" class="bg-light-gray pa4">
+        <div id="control" clas="f1" style="font-size: 4em;">
+          <i class="fa fa-stop-circle fr f1" id="stop" title="Stop Timer (End Task)"
+          onclick="stop_timer()"></i>
+        </div>
+        <h1 id="timer" class="tc fw3 f1 tracked-tight mt2 mb0">00:00</h1>
+        <h2 id="estimate" class="tc fw3 f4 tracked-tight mt0">00:00</h1>
+        <textarea name="description" id="description"
+          class="tc f2 input-reset pa2 ba b--near-black w-100 bg-light-gray"
+          style="resize: none; overflow: hidden;"
+          onkeyup="auto_grow(); save_timer_description()"
+          autofocus>Researching a team to build our app</textarea>
+      </div>
+      <div id="complete" class="mt2">
+        <table class="collapse ba br2 b--black-10 pv2 ph2 mh3 w-90" id="timers">
+          <thead>
+            <tr class="">
+              <th class="pv2 ph3 tl f6 fw6 ttu">Description</th>
+              <th class="tr f6 ttu fw6 pv2 ph3">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="striped--near-white">
+              <td class="pv2 ph3">Completed timers/tasks will appear here ...</td>
+              <td class="pv2 ph3 tr">18:43</td>
+            </tr>
+            <tr class="striped--near-white">
+              <td class="pv2 ph3">Totes works ...</td>
+              <td class="pv2 ph3 tr">18:43</td>
+            </tr>
+            <tr class="striped--near-white">
+              <td class="pv2 ph3">this is amazing!</td>
+              <td class="pv2 ph3 tr">18:43</td>
+            </tr>
+          </tbody>
+        </table>
+      <div>
+
+    </div>
+
+    <div onclick="reset_state()" style="position: absolute; bottom: 0px; left: 0.2em; height: 30px;">
+      <i class="fa fa-trash f1 dark-red" aria-hidden="true" id="reset" title="Reset ALL Timers!"></i>
+    </div>
+
+<script>
+(window.document.onload = function initialise (e) {
+  initialise_state()
+  start_timer();
+  update_timer_counter();
+  clock();
+  auto_grow();
+  render_complete();
+  update_desktop_browser_tab_title_counter();
+})()
+</script>
   </body>
 </html>
