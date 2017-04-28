@@ -12,8 +12,9 @@ AKA ["plan to throw one away"]!
 
 ## Why?
 
-To get _something_ I can start using _myself_ <br />
-(_I'm tired of using closed-source timers
+To get _something_ I can start using _myself_ and _measure_ my own usage
+while retaining `control` of my (_personal_) data.<br />
+(_I'm tired of using closed-source time/task trackers
 `while` we're building the "Real" version of Time!_)
 
 ![buildmeasurelearn](https://cloud.githubusercontent.com/assets/194400/25544285/ba5b81ca-2c51-11e7-9cf0-b24364a1975b.jpg)
@@ -44,7 +45,7 @@ We are _not_ making _any_ attempt to make the code:
 "_High Performance_", "_Scalable_" or "_Elegant_" in _any_ way. <br />
 We consider the MVP to be "_quick_" but _not_ "_dirty_".
 
-### Implementation Notes
+### _Implementation_ Notes
 
 While we have attempted to make this MVP as _simple as possible_
 by not using any server-side or client frameworks,
@@ -87,7 +88,7 @@ If you are new to PostgreSQL, please see:
 
 > _**Q**: **Why** Build a
 [**Minimum Viable Product**](https://en.wikipedia.org/wiki/Minimum_viable_product)
-("MVP") if you **know** it's not the "Real" thing? <br />
+("MVP") if you **know** it's not the "Real" thing?_ <br />
 > _**A**: If you are unfamiliar with why we build MVPs
 please read "The Lean Startup"_.
 
