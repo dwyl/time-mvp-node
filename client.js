@@ -194,6 +194,9 @@ function render_complete_table() {
   });
 }
 
+
+
+
 /**
  * this will DELETE the state in the app and the localStorage irrevocably!
  */

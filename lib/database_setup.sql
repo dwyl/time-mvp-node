@@ -23,14 +23,15 @@ INSERT INTO people (email, name, password)
   )
   EXCEPT
   SELECT email, name, password FROM people;
+
 /* sessions */
 CREATE TABLE IF NOT EXISTS sessions (
   session_id VARCHAR(36), -- using UUID/Hash ensures session_id is "unguessable"
-  person_id INTEGER NOT NULL REFERENCES people (id),
+  person_id INTEGER REFERENCES people (id),
   start_timestamp INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
   end_timestamp INTEGER DEFAULT null
 );
--- DECLARE @myvar VARCHAR(36);
+
 
 INSERT INTO sessions (session_id, person_id)
 VALUES (
