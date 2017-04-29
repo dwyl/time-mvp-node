@@ -5,13 +5,20 @@ var store;
  * Yes, this is an "impure" function setting a Global state but that's OK!!
  */
 function set_initial_state() {
-  store = { timers: [], default_minutes_per_pomodoro: 25 };
+
+  store = {
+    timers: [],
+    default_minutes_per_pomodoro: 25,
+    date: new Date(),
+    gmt_offset: new Date().toString().split("GMT")[1].split(" (")[0]
+  };
 }
 
 /**
  * read state form localStorage if the user has used the app before
  */
 function initialise_state() {
+  set_initial_state()
   try { // see: http://diveintohtml5.info/detect.html#storage
     if('localStorage' in window && window['localStorage'] !== null
       && localStorage.getItem('store')) {
