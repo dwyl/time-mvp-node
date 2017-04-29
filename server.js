@@ -102,34 +102,32 @@ function save_state_to_db(req, res, data, callback) {
     person_id: json.person_id || '1', // if person is not logged-in set to 1.
     data: data
   }
-  create_session_if_not_exist(record, function save() {
+  create_session_if_not_exist(record, function save() { // named inner callback
     console.log('totes done');
-    // INSERT ... ON CONFLICT UPDATE http://stackoverflow.com/a/17267423/1148249
-    var fields = 'session_id, person_id, data'
-    var upsert = escape('INSERT INTO store (store_id, session_id, person_id, data) VALUES (%L, %L, %L, %L)',
-      record.store_id, record.session_id, record.person_id, data);
-    console.log(upsert);
-    PG_CLIENT.query(upsert, function(err, result) {
-      console.log(err, result);
-      return callback();
-    });
+    return insert_or_update_state(record, callback);
   })
 }
 
 function insert_or_update_state(record, callback) {
-  // select
-
-  // update
-
-  // insert
-
-  var fields = 'session_id, person_id, data'
-  var upsert = escape('INSERT INTO store (store_id, session_id, person_id, data) VALUES (%L, %L, %L, %L)',
-    record.store_id, record.session_id, record.person_id, data);
-  console.log(upsert);
-  PG_CLIENT.query(upsert, function(err, result) {
-    console.log(err, result);
-    return callback();
+  var SELECT = escape('SELECT * FROM store WHERE session_id = %L', record.session_id);
+  PG_CLIENT.query(SELECT, function(err, result) {
+    // console.log(err, result);
+    if(err || result.rows.length === 0) {
+      var INSERT = escape('INSERT INTO store (session_id, person_id, data) VALUES (%L, %L, %L)',
+        record.session_id, record.person_id, record.data);
+      PG_CLIENT.query(INSERT, function(err, result) {
+        console.log(err, result);
+        return callback();
+      });
+    }
+    else {
+      var UPDATE = escape('UPDATE store SET (person_id, data) VALUES (%L, %L)',
+        record.person_id, record.data);
+      PG_CLIENT.query(UPDATE, function(err, result) {
+        console.log(err, result);
+        return callback();
+      });
+    }
   });
 }
 
