@@ -2,13 +2,13 @@
 
 ![MVP](https://cloud.githubusercontent.com/assets/194400/25544312/d77c27b4-2c51-11e7-9978-a5a434d0cf28.png)
 
-> The simplest version possible of [Time](https://github.com/dwyl/time) <br />
-written in the least sophisticated language
-in the shortest amount of time <br />
-to get _something_ working fast so I can start _testing_ it on _myself_
-(and other "_early adopters_") <br />
-So we can iterate on features _fast_! <br />
-AKA ["plan to throw one away"]!
+> _The **simplest version** possible of [Time](https://github.com/dwyl/time) <br />
+written in the **least sophisticated language**
+in the **shortest** amount of **time** <br />
+to get **something working fast** so I can **start testing** it on **myself**
+(and other "**early adopters**") <br />
+So we can **iterate** on features fast! <br />
+AKA ["plan to throw one away"]!_
 
 ## Why?
 
@@ -44,6 +44,11 @@ can read and **understand*** it_.
 We are _not_ making _any_ attempt to make the code:
 "_High Performance_", "_Scalable_" or "_Elegant_" in _any_ way. <br />
 We consider the MVP to be "_quick_" but _not_ "_dirty_".
+
+### Environment Variables
+
+
+
 
 ### _Implementation_ Notes
 
@@ -84,13 +89,14 @@ If you are new to PostgreSQL, please see:
 [github.com/dwyl/**learn-postgresql**](https://github.com/dwyl/learn-postgresql)
 
 
+
 ## Answers! (FAQ)
 
 > _**Q**: **Why** Build a
 [**Minimum Viable Product**](https://en.wikipedia.org/wiki/Minimum_viable_product)
 ("MVP") if you **know** it's not the "Real" thing?_ <br />
 > _**A**: If you are unfamiliar with why we build MVPs
-please read "The Lean Startup"_.
+please read ["The Lean Startup"](https://youtu.be/fEvKo90qBns)_.
 
 
 > _**Q**: **Why JavaScript**?_ <br />

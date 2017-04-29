@@ -45,7 +45,7 @@ function seconds_elapsed(start_time) {
 
 function seconds_remaining(start_time) {
   var now = Date.now();
-  var default_minutes_per_pomodoro = 25;
+  // var task_est = 25;
   var default_time_estimate = store.default_minutes_per_pomodoro * 60 * 1000;
   return Math.floor((start_time + default_time_estimate - now) / 1000);
 }
@@ -125,7 +125,7 @@ function save_timer_description() {
 
 function stop_timer() {
   store.timers[store.timers.length-1].end = Date.now();
-  render_complete();
+  render_complete_table();
   start_timer(); // start a new timer cause time doesn't stop!
   var desc = document.getElementById("description");
   desc.value = 'Describe your task ...';
@@ -133,7 +133,7 @@ function stop_timer() {
   desc.focus();
 }
 
-function render_complete() {
+function render_complete_table() {
   save_timer_description(); // avoid saving a timer without a description.
   // clear the placeholder table to make way for real timers.
   var old_tbody = document.getElementById('timers')
@@ -151,12 +151,12 @@ function render_complete() {
       newRow.className = 'striped--near-white';
       // Insert a cell in the row at index 0
       var descCell = newRow.insertCell(0);
-      descCell.className = 'pv2 ph3';
+      descCell.className = 'pv2 ph2';
       var newText = document.createTextNode(t.description);
       descCell.appendChild(newText);
 
       var timeCell = newRow.insertCell(1);
-      timeCell.className = 'pv2 ph3 tr';
+      timeCell.className = 'pv2 ph2 tr';
       var newText = document.createTextNode(format_timer(seconds));
       timeCell.appendChild(newText);
     }

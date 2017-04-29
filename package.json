@@ -12,9 +12,15 @@
   "author": "@nelsonic <nelson@dwyl.io> (https://github.com/nelsonic)",
   "license": "GPL-2.0",
   "scripts": {
+    "create": "node test/_create_table.js",
     "dev": "PORT=8000 ./node_modules/.bin/nodemon ./server.js",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js | node_modules/tap-spec/bin/cmd.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "test": "./node_modules/tape/bin/tape ./test/*.js",
-    "spec": "node ./node_modules/tape/bin/tape ./test/*.js | node_modules/tap-spec/bin/cmd.js"
+    "spec": "node ./node_modules/tape/bin/tape ./test/*.js | node_modules/tap-spec/bin/cmd.js",
+    "start": "npm run create && node lib/server.js"
+  },
+  "dependencies": {
+    "env2": "^2.1.1",
+    "pg": "^6.1.5"
   }
 }
