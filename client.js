@@ -30,6 +30,23 @@ function save_state_to_localstorage() {
 }
 
 /**
+ *
+ // * inspired by: http://stackoverflow.com/a/24468752
+ */
+function save_state_to_server() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/save', true);
+  xhr.setRequestHeader('Content-type', 'application/json');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var json = JSON.parse(xhr.responseText);
+      console.log(json)
+    } // else { console.log(xhr) } // how NOT to do error handling ...
+  }
+  xhr.send(JSON.stringify(store));
+}
+
+/**
  * format timer in MM:SS (no need for hours, yet!)
  */
 function format_timer(seconds) { // "pad" with a 00 or 0 if required:

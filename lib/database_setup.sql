@@ -45,12 +45,12 @@ CREATE TABLE IF NOT EXISTS store (
   session_id VARCHAR(36) NOT NULL REFERENCES sessions (session_id),
   person_id INTEGER REFERENCES people (id),
   created_timestamp INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
-  data jsonb
+  data jsonb -- see: github.com/dwyl/learn-postgresql/issues/10
 );
 
-DO $$
-DECLARE
-  sid VARCHAR := (SELECT md5(random()::text));
+DO $$   -- This is required to keep the session_id as a vairable we can re-use
+DECLARE -- see: stackoverflow.com/a/6990059/1148249
+  sid VARCHAR := (SELECT md5(random()::text)); -- stackoverflow.com/a/4566583/1148249
 BEGIN
   RAISE NOTICE 'Value of sid: %', sid;
 
@@ -65,5 +65,11 @@ BEGIN
     sid,
     '1',
     '{"hello":"world"}'
+  );
+  /* now attempt to insert without a person_id */
+  INSERT INTO store (session_id, data)
+  VALUES (
+    sid,
+    '{"totes":"works"}'
   );
 END $$;
