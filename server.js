@@ -70,11 +70,13 @@ function set_session_id(meta) {
  * see: https://github.com/nelsonic/time-mvp/issues/5
  */
 function create_session_if_not_exist(record, callback) {
-  var select = escape('SELECT * FROM sessions WHERE session_id = %L', record.session_id);
+  var select = escape('SELECT * FROM sessions '
+    + 'WHERE session_id = %L', record.session_id);
   PG_CLIENT.query(select, function(err, result) {
     // console.log(err, result);
     if(err || result.rows.length === 0) {
-      var create = escape('INSERT INTO sessions (session_id, person_id) VALUES (%L, %L)',
+      var create = escape('INSERT INTO sessions '
+        + '(session_id, person_id) VALUES (%L, %L)',
         record.session_id, record.person_id);
       PG_CLIENT.query(create, function(err, result) {
         console.log(err, result);
@@ -109,11 +111,13 @@ function save_state_to_db(req, res, data, callback) {
 }
 
 function insert_or_update_state(record, callback) {
-  var SELECT = escape('SELECT * FROM store WHERE session_id = %L', record.session_id);
+  var SELECT = escape('SELECT * FROM store WHERE session_id = %L',
+  record.session_id);
   PG_CLIENT.query(SELECT, function(err, result) {
     // console.log(err, result);
     if(err || result.rows.length === 0) {
-      var INSERT = escape('INSERT INTO store (session_id, person_id, data) VALUES (%L, %L, %L)',
+      var INSERT = escape('INSERT INTO store '
+      + '(session_id, person_id, data) VALUES (%L, %L, %L)',
         record.session_id, record.person_id, record.data);
       PG_CLIENT.query(INSERT, function(err, result) {
         console.log(err, result);
@@ -121,7 +125,8 @@ function insert_or_update_state(record, callback) {
       });
     }
     else {
-      var UPDATE = escape('UPDATE store SET (person_id, data) VALUES (%L, %L)',
+      var UPDATE = escape('UPDATE store SET ' +
+      '(person_id, data) VALUES (%L, %L)',
         record.person_id, record.data);
       PG_CLIENT.query(UPDATE, function(err, result) {
         console.log(err, result);
