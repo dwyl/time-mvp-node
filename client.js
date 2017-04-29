@@ -1,5 +1,12 @@
 // GLOBAL store for all data
-var store = { timers: [], default_minutes_per_pomodoro: 25 };
+var store;
+
+/**
+ * Yes, this is an "impure" function setting a Global state but that's OK!!
+ */
+function set_initial_state() {
+  store = { timers: [], default_minutes_per_pomodoro: 25 };
+}
 
 /**
  * read state form localStorage if the user has used the app before
@@ -145,7 +152,7 @@ function stop_timer() {
   render_complete_table();
   start_timer(); // start a new timer cause time doesn't stop!
   var desc = document.getElementById("description");
-  desc.value = 'Describe your task ...';
+  desc.value = ''; // reset to display placeholer
   auto_grow();
   desc.focus();
 }
@@ -184,7 +191,7 @@ function render_complete_table() {
  * this will DELETE the state in the app and the localStorage irrevocably!
  */
 function reset_state() {
-  store = { timers: [], default_minutes_per_pomodoro: 25 }; // reset
+  set_initial_state();
   localStorage.removeItem('store');
   window.location.reload();
   return false;
