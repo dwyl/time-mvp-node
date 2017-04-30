@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="client.js"></script> <!-- load "client" application  -->
   </head>
-  <body>
-    <div id="main" class="near-black">
-      <div id="current" class="bg-light-gray pa4">
+  <body onload="boot()">
+    <div id="main" class="">
+      <!-- shamelessly borrowed from tachyons.io/components/cards/basic-text-card/index.html -->
+      <h1 class="f1 bg-near-black white mv0 pv2 ph3">
+        <i class="fa fa-bars white f1" aria-hidden="true"
+          id="reset" title="Reset ALL Timers!" style="font-size: 1.5em;"></i>
+      </h1>
+      <div id="current" class="bg-light-gray pa4 near-black center ba">
         <div id="control" clas="f1" style="font-size: 4em;">
-          <i class="fa fa-stop-circle fr f1" id="stop" title="Stop Timer (End Task)"
-          onclick="stop_timer()"></i>
+          <i class="fa fa-stop-circle fr f1 mb4" id="stop" title="Stop Timer (End Task)"
+          onclick="stop_timer()" style="font-size: 2em;"></i>
         </div>
-        <h1 id="timer" class="tc fw6 f1 mt2 mb0">00:00</h1>
+        <h1 id="timer" class="tc fw6 f1 mt2 mb0"
+          style="font-size: 4em;">00:00</h1>
         <h2 id="estimate" class="tc fw3 f2 tracked-tight mt0">00:00</h1>
         <textarea name="description" id="description"
-          class="input-reset tc f1 pa2 ba b--near-black w-100 bg-light-gray"
+          class="input-reset tc f1 pa3 ba b--near-black w-100 bg-light-gray br3 mb3"
           style="resize: none; overflow: hidden;"
           onkeyup="auto_grow(); save_timer_description()"
           placeholder="Describe your task/activity ..."
           autofocus></textarea>
       </div>
+      <h1 id="timer" class="tc fw6 f2 ma4 black-50">Completed Tasks/Timers:</h1>
       <div id="complete" class="mt2">
         <table class="collapse ba br2 b--black-10 pv2 ph2 mh1 ml2" style="width: 97%;" id="timers">
           <thead>
@@ -47,6 +54,8 @@
           </tbody>
         </table>
       <div>
+    </div>
+    <div id="register">
 
     </div>
 
@@ -56,17 +65,5 @@
         id="reset" title="Reset ALL Timers!" style="font-size: 3em;"></i>
     </footer>
 
-<script>
-(window.document.onload = function initialise (e) {
-  initialise_state()
-  start_timer();
-  update_timer_counter();
-  clock();
-  auto_grow();
-  render_complete_table();
-  update_desktop_browser_tab_title_counter();
-  save_state_to_server();
-})()
-</script>
   </body>
 </html>
