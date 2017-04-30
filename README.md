@@ -45,10 +45,56 @@ We are _not_ making _any_ attempt to make the code:
 "_High Performance_", "_Scalable_" or "_Elegant_" in _any_ way. <br />
 We consider the MVP to be "_quick_" but _not_ "_dirty_".
 
-### Environment Variables
+The best way to get started is to run this example *locally*.
+
+> Please ***ensure*** you have ***PostgreSQL Installed and Running*** on your local machine
+***before*** you attempt to run this example.
+> see: https://wiki.postgresql.org/wiki/Detailed_installation_guides
+
+### 1. Clone the repo:
+
+```sh
+git clone https://github.com/nelsonic/time-mvp.git
+cd time-mvp
+```
+### 2. Install *Dependencies* from NPM
+
+```sh
+npm install
+```
+
+### 3. Environment Variables
+
+Ensure you have the Required Environment Variables:
+
+create an `.env` file in root of the project
+
+and add a line for your `DATABASE_URL`.
+e.g:
+```sh
+export DATABASE_URL=postgres://postgres:@localhost/test
+```
+
+> The `default` on Mac is: export DATABASE_URL=postgres://postgres:@localhost/test  
+> if you don't *already* have a database called `test` on your system,  
+> create it now by running this command in your psql/pgadmin: `CREATE DATABASE test;`
 
 
+### 4. Run the Tests
 
+```sh
+npm test
+```
+
+**Note**: running `npm test` will first execute `npm run create` which creates
+the necessary Database Tables to run the app. see:
+[/test/database_setup.sql](https://github.com/nelsonic/time-mvp/blob/master/test/database_setup.sql)
+
+### 5. Run the Server
+
+```sh
+npm run dev
+```
 
 ### _Implementation_ Notes
 
@@ -92,7 +138,8 @@ If you are new to PostgreSQL, please see:
 ### Deployed to `Heroku`
 
 The _fastest_ way we know to ship an application
-is using Heroku (_5 mins_). _**You can too**_: 
+is using Heroku (_5 mins_). <br />
+_**You can too**_:
 [github.com/dwyl/**learn-heroku**](https://github.com/dwyl/learn-heroku)
 
 
