@@ -89,6 +89,12 @@ If you are new to PostgreSQL, please see:
 [github.com/dwyl/**learn-postgresql**](https://github.com/dwyl/learn-postgresql)
 
 
+### Deployed to `Heroku`
+
+The _fastest_ way we know to ship an application
+is using Heroku (_5 mins_). _**You can too**_: 
+[github.com/dwyl/**learn-heroku**](https://github.com/dwyl/learn-heroku)
+
 
 ## Answers! (FAQ)
 
