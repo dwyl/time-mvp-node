@@ -20,10 +20,10 @@
           onclick="stop_timer()" style="font-size: 2em;"></i>
         </div>
         <h1 id="timer" class="tc fw6 f1 mt2 mb0"
-          style="font-size: 4em;">00:00</h1>
+          style="font-size: 6em;">00:00</h1>
         <h2 id="estimate" class="tc fw3 f2 tracked-tight mt0">00:00</h1>
         <textarea name="description" id="description"
-          class="input-reset tc f1 pa3 ba b--near-black w-100 bg-light-gray br3 mb3"
+          class="input-reset tc f1 pa3 ba b--near-black w-100 bg-white br3 mb3"
           style="resize: none; overflow: hidden;"
           onkeyup="auto_grow(); save_timer_description()"
           placeholder="Describe your task/activity ..."
@@ -55,8 +55,19 @@
         </table>
       <div>
     </div>
-    <div id="register">
 
+    <!-- inspired by: http://tachyons.io/components/forms/newsletter-subscription/index.html -->
+    <div class="mt5 bg-near-black center pa4 br2-ns ba b--black-10" id="register">
+      <legend class="pa0 f1 mb3 white">
+        Save timer/tasks to email
+      </legend>
+      <div class="cf">
+        <label class="clip" for="email-address">Email Address</label>
+        <input class="f1 input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-60-m w-75-l br2-ns br--left-ns mr3"
+          placeholder="Your Email Address" type="text" name="email-address" value="" id="email-address">
+        <input class="f1 button-reset fl pv3 tc bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br bt bb b--white bw2"
+        type="submit" value="Save">
+      </div>
     </div>
 
     <footer onclick="reset_state()"
