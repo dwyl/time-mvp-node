@@ -23,19 +23,19 @@
           style="font-size: 6em;">00:00</h1>
         <h2 id="estimate" class="tc fw3 f2 tracked-tight mt0">00:00</h1>
         <textarea name="description" id="description"
-          class="input-reset tc f1 pa3 ba b--near-black w-100 bg-white br3 mb3"
+          class="input-reset tc f1 pa3 ba b--near-black w-100 bg-white br3 mv4"
           style="resize: none; overflow: hidden;"
           onkeyup="auto_grow(); save_timer_description()"
           placeholder="Describe your task/activity ..."
           autofocus></textarea>
       </div>
-      <h1 id="timer" class="tc fw6 f2 ma4 black-50">Completed Tasks/Timers:</h1>
-      <div id="complete" class="mt2">
-        <table class="collapse ba br2 b--black-10 pv2 ph2 mh1 ml2" style="width: 97%;" id="timers">
+      <h1 id="timer" class="dn tc fw6 f2 ma4 black-50">Completed Tasks/Timers:</h1>
+      <div id="complete" class="dn mt2 hidden">
+        <table class="collapse ba br2 b--black-10 pv2 ph2 w-100"  id="timers">
           <thead>
-            <tr class="">
-              <th class="pv2 ph3 tl f1 fw6 ttu">Description</th>
-              <th class="tr f1 ttu fw6 pv2 ph3">Time</th>
+            <tr class="bg-near-black white pv3">
+              <th class="pv3 ph3 tl f1 fw6 ttu">Description</th>
+              <th class="tr f1 ttu fw6 pv3 ph3">Time</th>
             </tr>
           </thead>
           <tbody>
@@ -57,17 +57,22 @@
     </div>
 
     <!-- inspired by: http://tachyons.io/components/forms/newsletter-subscription/index.html -->
-    <div class="mt5 bg-near-black center pa4 br2-ns ba b--black-10" id="register">
+    <div class="dn mt5 bg-near-black center pa4 br2-ns ba b--black-10" id="register">
       <legend class="pa0 f1 mb3 white">
-        Save timer/tasks to email
+        Save timer/tasks to email inbox:
       </legend>
       <div class="cf">
         <label class="clip" for="email-address">Email Address</label>
-        <input class="f1 input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-60-m w-75-l br2-ns br--left-ns mr3"
+        <input class="f1 input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-60-m w-75-l br2-ns br--left-ns br3 mr3"
           placeholder="Your Email Address" type="email" name="email-address" value="" id="email-address">
-        <input class="f1 button-reset fl pv3 tc bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br bt bb b--white bw2"
+        <input class="f1 button-reset fl pv3 tc bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br bt bb br3 b--white bw2"
         type="submit" value="Save" onclick="save_email()">
       </div>
+      <p class="dn mt2 mb1 f1 light-pink" id="email-error-message">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+        Please use a <strong><em>valid</em></strong> email addresss
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+      </p>
     </div>
 
     <footer onclick="reset_state()"
