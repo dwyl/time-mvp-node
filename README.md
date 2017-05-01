@@ -34,6 +34,10 @@ https://github.com/nelsonic/time-mvp/issues
 (_I don't "byte"! and usually reply within a couple of hours..._)
 
 
+
+> See: Implementation Notes (_below_)
+
+
 ## How?
 
 The code in this project/MVP is meant to be: (_in order of priority_)
@@ -89,7 +93,7 @@ emails via AWS SES using
 [sendemail](https://github.com/dwyl/sendemail#2-set-your-environment-variables)
 if you are only trying this out on your localhost
 you won't need to set these and the email sending
-feature will degrade gracefully. 
+feature will degrade gracefully.
 
 ### 4. Run the Tests
 
@@ -108,6 +112,19 @@ npm run dev
 ```
 
 ### _Implementation_ Notes
+
+### Absolute _Bare Minimum_ Dependencies
+
+_Most_ people are lead to believe that they need to learn/use
+the latest & greatest framework in order to build _anything_.
+
+This _complete_ has **_Exactly Five_ Dependencies**. <br />
+see: https://github.com/nelsonic/time-mvp/blob/master/package.json <br />
+i.e: No React, Redux, Babel, Webpack, Express/Hapi, etc. <br />
+This is _not_ a "_coincidence_".
+It's _certainly_ not because we (_reasonably experienced developers_)
+don't _know how_ to use these frameworks/libraries ...
+
 
 While we have attempted to make this MVP as _simple as possible_
 by not using any server-side or client frameworks,
