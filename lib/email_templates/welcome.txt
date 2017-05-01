@@ -8,6 +8,9 @@ and soon it will help you do much more,
 including making time for what you love.
 https://github.com/ideaq/start-here/blob/master/manifesto.md
 
+Please verify your email address by pasting this link in your browser:
+{{server}}/verify?{{verify_token}}
+
 If you have any questions or find any issues, big or small,
 please drop us a note or add an issue to github:
 https://github.com/ideaq/time/labels/MVP

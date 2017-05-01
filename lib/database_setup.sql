@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS people (
   name VARCHAR(100) DEFAULT NULL,
   password VARCHAR(60) NOT NULL,
   created INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
+  verify_token VARCHAR(13) DEFAULT NULL,
   verified INTEGER DEFAULT NULL
 );
 /* insert a person into the people table if it does not already exist */
