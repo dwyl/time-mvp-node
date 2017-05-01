@@ -22,6 +22,7 @@
   "dependencies": {
     "env2": "^2.1.1",
     "pg": "^6.1.5",
-    "pg-escape": "^0.2.0"
+    "pg-escape": "^0.2.0",
+    "sendemail": "^3.3.0"
   }
 }

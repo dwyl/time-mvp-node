@@ -73,12 +73,23 @@ and add a line for your `DATABASE_URL`.
 e.g:
 ```sh
 export DATABASE_URL=postgres://postgres:@localhost/test
+export TEMPLATE_DIRECTORY=./lib/email_templates
+export SENDER_EMAIL_ADDRESS=your.aws.verified.email.address@gmail.com
+export AWS_REGION=eu-west-1
+export AWS_ACCESS_KEY_ID=YOURKEY
+export AWS_SECRET_ACCESS_KEY=YOURSUPERSECRET
 ```
 
 > The `default` on Mac is: export DATABASE_URL=postgres://postgres:@localhost/test  
 > if you don't *already* have a database called `test` on your system,  
 > create it now by running this command in your psql/pgadmin: `CREATE DATABASE test;`
 
+Most of these environment variables are for sending
+emails via AWS SES using
+[sendemail](https://github.com/dwyl/sendemail#2-set-your-environment-variables)
+if you are only trying this out on your localhost
+you won't need to set these and the email sending
+feature will degrade gracefully. 
 
 ### 4. Run the Tests
 
