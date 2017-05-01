@@ -136,6 +136,8 @@ so we will be able to re-use code
 in the "Real" version of the Time app.
 + Most people in our organization are _familiar_/_experienced_
 with these tools so the code in this MVP will be easy to understand.
++ We have a "Beginner Level" ***Tutorial*** `forEach` one
+(_see links in each sub-section below_) so the learning curve is shallower.
 
 ### `Tachyons` for UI Consistency
 
