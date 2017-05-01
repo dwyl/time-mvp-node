@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS people (
   id SERIAL PRIMARY KEY,
   email VARCHAR(254) UNIQUE NOT NULL,
   name VARCHAR(100) DEFAULT NULL,
-  password VARCHAR(60) NOT NULL
+  password VARCHAR(60) NOT NULL,
+  created INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
+  verified INTEGER DEFAULT NULL
 );
 /* insert a person into the people table if it does not already exist */
 /* stackoverflow.com/questions/4069718/postgres-insert-if-does-not-exist-already */
