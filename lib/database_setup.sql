@@ -34,20 +34,46 @@ CREATE TABLE IF NOT EXISTS sessions (
   start_timestamp INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
   end_timestamp INTEGER DEFAULT null
 );
-
-
-INSERT INTO sessions (session_id, person_id)
-VALUES (
-  (SELECT md5(random()::text)),
-  '1'
-);
-/* Unique Constraint on Column: http://stackoverflow.com/a/7327598/1148249 */
-CREATE UNIQUE INDEX IF NOT EXISTS unique_session_id ON sessions (session_id);
-
-CREATE TABLE IF NOT EXISTS store (
-  store_id SERIAL PRIMARY KEY,
-  session_id VARCHAR(36) NOT NULL REFERENCES sessions (session_id),
-  person_id INTEGER REFERENCES people (id),
-  created_timestamp INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
-  data jsonb -- see: github.com/dwyl/learn-postgresql/issues/10
-);
+-- 
+--
+-- INSERT INTO sessions (session_id, person_id)
+-- VALUES (
+--   (SELECT md5(random()::text)),
+--   '1'
+-- );
+-- /* Unique Constraint on Column: http://stackoverflow.com/a/7327598/1148249 */
+-- CREATE UNIQUE INDEX IF NOT EXISTS unique_session_id ON sessions (session_id);
+--
+-- CREATE TABLE IF NOT EXISTS store (
+--   store_id SERIAL PRIMARY KEY,
+--   session_id VARCHAR(36) NOT NULL REFERENCES sessions (session_id),
+--   person_id INTEGER REFERENCES people (id),
+--   created_timestamp INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
+--   data jsonb -- see: github.com/dwyl/learn-postgresql/issues/10
+-- );
+--
+-- DO $$   -- This is required to keep the session_id as a vairable we can re-use
+-- DECLARE -- see: stackoverflow.com/a/6990059/1148249
+--   sid VARCHAR := (SELECT md5(random()::text)); -- stackoverflow.com/a/4566583/1148249
+-- BEGIN
+--   RAISE NOTICE 'Value of sid: %', sid;
+--
+--   INSERT INTO sessions (session_id, person_id)
+--   VALUES (
+--     sid,
+--     '1'
+--   );
+--
+--   INSERT INTO store (session_id, person_id, data)
+--   VALUES (
+--     sid,
+--     '1',
+--     '{"hello":"world"}'
+--   );
+--   /* now attempt to insert without a person_id */
+--   INSERT INTO store (session_id, data)
+--   VALUES (
+--     sid,
+--     '{"totes":"works"}'
+--   );
+-- END $$;
