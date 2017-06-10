@@ -5,8 +5,10 @@ var pg = require('pg');
 function create_tables (callback) {
   var client = new pg.Client(process.env.DATABASE_URL);
   client.connect(function(err) {
-    assert(!err); // die if we cannot connect
+    console.log(' - - - - - - - - -err:')
     console.log(err);
+    console.log('- - - - - - - - - - - - - - - - - - - ');
+    assert(!err); // die if we cannot connect
     var file = require('path').resolve('./lib/database_setup.sql');
     var query = require('fs').readFileSync(file, 'utf8').toString();
     console.log('\n', query);
