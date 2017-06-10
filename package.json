@@ -2,9 +2,6 @@
   "name": "time-mvp",
   "version": "1.0.0",
   "description": "> The scrappiest version possible of [Time](https://github.com/dwyl/time) written in the crappiest language in the shortest amount of time to get something working fast so I can start iterating/testing it on myself! AKA \"one to throw away\"!",
-  "devDependencies": {
-    "nodemon": "^1.11.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nelsonic/time-mvp.git"
@@ -24,5 +21,11 @@
     "pg": "^6.1.5",
     "pg-escape": "^0.2.0",
     "sendemail": "^3.3.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.11.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
   }
 }

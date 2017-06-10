@@ -1,5 +1,7 @@
 # Time MVP > https://time-mvp.herokuapp.com
 
+[![Build Status](https://travis-ci.org/nelsonic/time-mvp.svg?branch=master)](https://travis-ci.org/nelsonic/time-mvp)
+
 ![MVP](https://cloud.githubusercontent.com/assets/194400/25544312/d77c27b4-2c51-11e7-9978-a5a434d0cf28.png)
 
 > _The **simplest version** possible of [Time](https://github.com/dwyl/time) <br />
@@ -47,9 +49,18 @@ can read and **understand*** it_.
 
 We are _not_ making _any_ attempt to make the code:
 "_High Performance_", "_Scalable_" or "_Elegant_" in _any_ way. <br />
-We consider the MVP to be "_quick_" but _not_ "_dirty_".
 
 The best way to get started is to run this example *locally*.
+
+> _As always, if you have **any questions** or get stuck,
+we are here to help! Open an issue/question:
+https://github.com/nelsonic/time-mvp/issues
+
+### 0. Pre-Requisites
+
+You will need to have two things installed `before` trying to run the code:
++ Node.js (_with NPM_)
++ PostgreSQL
 
 > Please ***ensure*** you have ***PostgreSQL Installed and Running*** on your local machine
 ***before*** you attempt to run this example.
@@ -111,7 +122,7 @@ the necessary Database Tables to run the app. see:
 npm run dev
 ```
 
-### _Implementation_ Notes
+## _Implementation_ Notes
 
 ### Absolute _Bare Minimum_ Dependencies
 
@@ -149,7 +160,7 @@ see:
 [github.com/dwyl/**learn-tachyons**](https://github.com/dwyl/learn-tachyons)
 
 
-### `PostgreSQL` for Persistence (_Saving Data_)
+### `PostgreSQL` for Persistence (_Saving/Storing Data_)
 
 PostgreSQL is the not the _fastest_ Datastore,
 (_that would be [Redis](https://github.com/dwyl/learn-redis) ..._)

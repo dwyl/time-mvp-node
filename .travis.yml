@@ -4,9 +4,8 @@ node_js:
 sudo: false
 before_script:
   - psql -c 'create database test;' -U postgres
-before_install:
-  - pip install --user codecov
 after_success:
+  - pip install --user codecov
   - codecov --file coverage/lcov.info --disable search
 env:
   global:
