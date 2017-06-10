@@ -2,8 +2,10 @@ language: node_js
 node_js:
   - 6
 sudo: false
-services:
-  - postgresql
+# services:
+#   - postgresql
+addons:
+  postgresql: "9.6"
 before_install:
   - psql -c 'create database test;' -U postgres
 after_success:
