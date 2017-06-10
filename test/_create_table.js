@@ -11,12 +11,17 @@ function create_tables (callback) {
     var query = require('fs').readFileSync(file, 'utf8').toString();
     console.log('\n', query);
     client.query(query, function(err, result) {
-      client.end(); // close connection to database
-      return callback(err, result);
+      console.log(err, result, 'DB Table Created & Test Data Inserted');
+      var SELECT = 'SELECT * FROM people';
+      client.query(SELECT, function(err, result) {
+
+        client.end(); // close connection to database
+        return callback(err, result);
+      })
     });
   });
 }
 
-create_tables(function (err, data) {
-  console.log(err, data, 'DB Table Created & Test Data Inserted');
+create_tables(function (err, result) {
+  console.log(err, 'result:', result.rows[0]);
 });

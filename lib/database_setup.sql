@@ -1,4 +1,4 @@
-
+--echo-all
 /* first drop test tables from previous session so we have a clean database */
 /* DROP SCHEMA public cascade; http://stackoverflow.com/a/13823560/1148249 */
 CREATE SCHEMA IF NOT EXISTS public;
@@ -9,10 +9,13 @@ CREATE TABLE IF NOT EXISTS people (
   id SERIAL PRIMARY KEY,
   email VARCHAR(254) UNIQUE NOT NULL,
   name VARCHAR(100) DEFAULT NULL,
-  password VARCHAR(60) NOT NULL
+  password VARCHAR(60) NOT NULL,
+  created INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
+  verify_token VARCHAR(13) DEFAULT NULL,
+  verified INTEGER DEFAULT NULL
 );
 /* insert a person into the people table if it does not already exist */
-/* http://stackoverflow.com/questions/4069718/postgres-insert-if-does-not-exist-already */
+/* stackoverflow.com/questions/4069718/postgres-insert-if-does-not-exist-already */
 INSERT INTO people (email, name, password)
   SELECT email, name, password FROM people
   UNION
@@ -23,15 +26,28 @@ INSERT INTO people (email, name, password)
   )
   EXCEPT
   SELECT email, name, password FROM people;
+
 /* sessions */
 CREATE TABLE IF NOT EXISTS sessions (
-  session_id VARCHAR(36),
-  person_id INTEGER NOT NULL REFERENCES people (id),
+  session_id VARCHAR(36), -- using UUID/Hash ensures session_id is "unguessable"
+  person_id INTEGER REFERENCES people (id),
   start_timestamp INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
   end_timestamp INTEGER DEFAULT null
 );
+
+
 INSERT INTO sessions (session_id, person_id)
 VALUES (
-  '525be54a-1101-46bf-97d7-2e9c89dd1b16',
+  (SELECT md5(random()::text)),
   '1'
+);
+/* Unique Constraint on Column: http://stackoverflow.com/a/7327598/1148249 */
+CREATE UNIQUE INDEX IF NOT EXISTS unique_session_id ON sessions (session_id);
+
+CREATE TABLE IF NOT EXISTS store (
+  store_id SERIAL PRIMARY KEY,
+  session_id VARCHAR(36) NOT NULL REFERENCES sessions (session_id),
+  person_id INTEGER REFERENCES people (id),
+  created_timestamp INTEGER DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP),
+  data jsonb -- see: github.com/dwyl/learn-postgresql/issues/10
 );
