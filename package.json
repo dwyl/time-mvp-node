@@ -10,12 +10,13 @@
   "license": "GPL-2.0",
   "scripts": {
     "create": "node test/_create_table.js",
-    "dev": "PORT=8000 ./node_modules/.bin/nodemon ./lib/server.js",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js | node_modules/tap-spec/bin/cmd.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
-    "test": "./node_modules/tape/bin/tape ./test/*.test.js",
+    "dev": "PORT=5000 ./node_modules/.bin/nodemon ./lib/server.js",
+    "faster": "./node_modules/faster/bin/faster.js",
+    "postinstall": "npm run create",
     "spec": "node ./node_modules/tape/bin/tape ./test/*.test.js | node_modules/tap-spec/bin/cmd.js",
     "start": "node lib/server.js",
-    "postinstall": "npm run create"
+    "test": "./node_modules/tape/bin/tape ./test/*.test.js"
   },
   "dependencies": {
     "env2": "^2.1.1",
@@ -24,6 +25,7 @@
     "sendemail": "^3.3.0"
   },
   "devDependencies": {
+    "faster": "^3.5.1",
     "istanbul": "^0.4.5",
     "nodemon": "^1.11.0",
     "tap-spec": "^4.1.1",
