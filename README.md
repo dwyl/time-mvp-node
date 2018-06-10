@@ -1,16 +1,20 @@
-# Time MVP > https://time-mvp.herokuapp.com
+# Time App Minimum Viable Product ("MVP")
+
+> Try it: https://time-mvp.herokuapp.com
+
 
 [![Build Status](https://travis-ci.org/nelsonic/time-mvp.svg?branch=master)](https://travis-ci.org/nelsonic/time-mvp)
 
 ![MVP](https://cloud.githubusercontent.com/assets/194400/25544312/d77c27b4-2c51-11e7-9978-a5a434d0cf28.png)
 
 > _The **simplest version** possible of [Time](https://github.com/dwyl/time) <br />
-written in the **least sophisticated language**
+written in the **least sophisticated language** <br />
 in the **shortest** amount of **time** <br />
-to get **something working fast** so I can **start testing** it on **myself**
+to get **something working fast** <br />
+so that I can **start testing** it on **myself** <br />
 (and other "**early adopters**") <br />
-So we can **iterate** on features fast! <br />
-AKA ["plan to throw one away"]!_
+so that we can **iterate** on features **fast**! <br />
+AKA_ ["***plan to throw one away***"](https://en.wikiquote.org/wiki/Fred_Brooks).
 
 ## Why?
 
@@ -45,7 +49,7 @@ https://github.com/nelsonic/time-mvp/issues
 The code in this project/MVP is meant to be: (_in order of priority_)
 + _**Functional** - it works well enough for **me** to start using it!_
 + _**Human-readable** so **anyone** with basic HTML/JavaScript knowledge
-can read and **understand*** it_.
+can read and **understand** it_.
 
 We are _not_ making _any_ attempt to make the code:
 "_High Performance_", "_Scalable_" or "_Elegant_" in _any_ way. <br />
@@ -119,7 +123,7 @@ the necessary Database Tables to run the app. see:
 ### 5. Run the Server
 
 ```sh
-npm run dev
+npm run faster
 ```
 
 ## _Implementation_ Notes

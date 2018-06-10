@@ -6,29 +6,41 @@
     href="https://cloud.githubusercontent.com/assets/194400/25605640/15c23162-2f04-11e7-8371-228cf5bf61e2.png"/>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.6.1/css/tachyons.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src='https://rawgit.com/dwyl/faster/master/lib/client.js'></script>
     <script src="client.js"></script> <!-- load "client" application  -->
   </head>
+
   <body onload="boot()">
-    <div id="main" class="">
-      <!-- shamelessly borrowed from tachyons.io/components/cards/basic-text-card/index.html -->
+    <div id="main" class="debug">
+      <!-- borrowed from tachyons.io/components/cards/basic-text-card/index.html
       <h1 class="f1 bg-near-black white mv0 pv2 ph3">
         <i class="fa fa-bars white f1" aria-hidden="true"
           id="reset" title="Reset ALL Timers!" style="font-size: 1.5em;"></i>
       </h1>
+      -->
+
       <div id="current" class="bg-light-gray pa4 near-black center ba">
-        <div id="control" clas="f1" style="font-size: 4em;">
-          <i class="fa fa-stop-circle fr f1 mb4" id="stop" title="Stop Timer (End Task)"
-          onclick="stop_timer()" style="font-size: 2em;"></i>
+
+        <div id="control" class="fr" onclick="stop_timer()">
+          <i id="stop" class="fa fa-stop-circle f1 mb4 fr red"
+           title="Stop Timer (End Task)"
+           style="font-size: 4em; margin-bottom:0em;"></i> <br />
+          <small class="fw1"> Stop Timer </small>
         </div>
+
+        <!-- current "active" timer/activity -->
         <h1 id="timer" class="tc fw6 f1 mt2 mb0"
-          style="font-size: 6em;">00:00</h1>
+          style="font-size: 3em;">00:00</h1>
+
         <h2 id="estimate" class="tc fw3 f2 tracked-tight mt0">00:00</h1>
+
         <textarea name="description" id="description"
           class="input-reset tc f1 pa3 ba b--near-black w-100 bg-white br3 mv4"
           style="resize: none; overflow: hidden;"
           onkeyup="auto_grow(); save_timer_description()"
           placeholder="Describe your task/activity ..."
           autofocus></textarea>
+
         <p class="dn mt2 mb1 f1 light-pink" id="description-error-message">
           <i class="fa fa-arrow-up" aria-hidden="true"></i>
           Please enter a <strong><em>description</em></strong> for your task
@@ -36,13 +48,14 @@
           <i class="fa fa-arrow-up" aria-hidden="true"></i>
         </p>
       </div>
-      <h1 id="timer" class="dn tc fw6 f2 ma4 black-50">Completed Tasks/Timers:</h1>
-      <div id="complete" class="mt2">
+      <h1 id="timer" class="dn tc fw6 f3 ma4 black-50">Completed Tasks/Timers:</h1>
+
+      <div id="complete" class="mt2 fw1">
         <table class="collapse ba br2 b--black-10 pv2 ph2 w-100"  id="timers">
           <thead>
             <tr class="bg-near-black white pv3">
-              <th class="pv3 ph3 tl f1 fw6 ttu">Description</th>
-              <th class="tr f1 ttu fw6 pv3 ph3">Time</th>
+              <th class="pv3 ph3 tl f3 fw6">Description</th>
+              <th class="tr f3 fw6 pv3 ph3">Time Taken</th>
             </tr>
           </thead>
           <tbody>
@@ -66,7 +79,7 @@
     <!-- inspired by: http://tachyons.io/components/forms/newsletter-subscription/index.html -->
     <div class="mt5 bg-near-black center pa4 br2-ns ba b--black-10"
       id="register">
-      <legend class="pa0 f1 mb3 white">
+      <legend class="pa0 f3 mb3 white">
         Save timer/tasks to email inbox:
       </legend>
       <div class="cf">
