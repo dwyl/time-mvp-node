@@ -1,16 +1,18 @@
 var fs = require('fs');
 var path = require('path');
 var db = require('./db.js');
+var index = path.resolve(__dirname, '../client/index.html');
+var app = path.resolve(__dirname, '../client/app.js')
 
 function serve_index(req, res) {
-  return fs.readFile(path.resolve('./lib/index.html'), function (err, data) {
+  return fs.readFile(index, function (err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end(data);
   });
 }
 
-function serve_client(req, res) {
-  return fs.readFile(path.resolve('./lib/client.js'), function (err, data) {
+function serve_app(req, res) {
+  return fs.readFile(app, function (err, data) {
     res.writeHead(200, {'Content-Type': 'text/javascript'});
     res.end(data);
   });
@@ -37,7 +39,7 @@ function handle_post(req, res) {
 function handle_email_verification_request(req, res) {
   if(req.headers.accept.indexOf('text/html') > -1) { // clicked link in email
     db.check_verification_token(req, res, function(err, req, res) {
-      fs.readFile(path.resolve('./lib/index.html'), function (err, data) {
+      fs.readFile(index, function (err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end(data);
       });
@@ -56,7 +58,7 @@ function handle_email_verification_request(req, res) {
 
 module.exports = {
   serve_index: serve_index,
-  serve_client: serve_client,
+  serve_app: serve_app,
   handle_post: handle_post,
   handle_email_verification_request: handle_email_verification_request
 }
