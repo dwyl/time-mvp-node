@@ -77,7 +77,7 @@ function elmount(model, update, view, root_element_id) {
 
 // empty the contents of a given DOM element "node" (before re-rendering)
 function empty(node) {
-  console.log('node', node);
+  // console.log('node', node);
   while (node.firstChild) {
       node.removeChild(node.firstChild);
   }
@@ -104,21 +104,3 @@ function div(divid, text) {
   }
   return div;
 }
-
-function init(doc){
-  document = doc; // this is used for instantiating JSDOM. ignore!
-}
-
-/* The code block below ONLY Applies to tests run using Node.js */
-/* istanbul ignore next */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    view: view,
-    mount: mount,
-    update: update,
-    div: div,
-    button: button,
-    empty: empty,
-    init: init
-  }
-} else { init(document); }

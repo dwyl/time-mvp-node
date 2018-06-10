@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var db = require('./db.js');
 var index = path.resolve(__dirname, '../client/index.html');
-var app = path.resolve(__dirname, '../client/app.js')
+var app = path.resolve(__dirname, '../client/app.js');
 
 function serve_index(req, res) {
   return fs.readFile(index, function (err, data) {
@@ -13,6 +13,18 @@ function serve_index(req, res) {
 
 function serve_app(req, res) {
   return fs.readFile(app, function (err, data) {
+    res.writeHead(200, {'Content-Type': 'text/javascript'});
+    res.end(data);
+  });
+}
+
+function serve_static(req, res) {
+  console.log('called serve_satic', req.url);
+  var filename = req.url.split('?')[0];
+  console.log('filename:', filename);
+  var filepath = path.resolve(__dirname, '../client/' + filename);
+  console.log('filepath:', filepath);
+  return fs.readFile(filepath, function (err, data) {
     res.writeHead(200, {'Content-Type': 'text/javascript'});
     res.end(data);
   });
@@ -59,6 +71,7 @@ function handle_email_verification_request(req, res) {
 module.exports = {
   serve_index: serve_index,
   serve_app: serve_app,
+  serve_static: serve_static,
   handle_post: handle_post,
   handle_email_verification_request: handle_email_verification_request
 }

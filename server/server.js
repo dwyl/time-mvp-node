@@ -5,7 +5,10 @@ http.createServer(function run (req, res) { // can you make simplify it? ;-)
   console.log(req.method, ':', req.url);    // absolute minimum request logging
   var url = req.url.split('?')[0];          // strip query params for routing
   switch (url) {
-    case '/app.js':                      // serve the client application
+    case '/elmo.js':                        // not "DRY" ... #helpwanted!
+      handlers.serve_static(req, res);
+      break;
+    case '/app.js':                         // serve the client application
       handlers.serve_app(req, res);
       break;
     case '/save':                           // save state to server
