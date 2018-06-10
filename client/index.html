@@ -6,33 +6,32 @@
     href="https://cloud.githubusercontent.com/assets/194400/25605640/15c23162-2f04-11e7-8371-228cf5bf61e2.png"/>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.6.1/css/tachyons.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src='https://rawgit.com/dwyl/faster/master/lib/client.js'></script>
-    <script src="app.js"></script> <!-- load "client" application  -->
   </head>
 
   <body onload="boot()">
-    <div id="main" class="debug">
+    <div id="app"><h1>Hello World</h1></div>
+
+    <div id="main" class="debug debug-grid">
       <!-- borrowed from tachyons.io/components/cards/basic-text-card/index.html
       <h1 class="f1 bg-near-black white mv0 pv2 ph3">
         <i class="fa fa-bars white f1" aria-hidden="true"
           id="reset" title="Reset ALL Timers!" style="font-size: 1.5em;"></i>
       </h1>
       -->
+      <div id="current" class="pa2 near-black center ba">
 
-      <div id="current" class="bg-light-gray pa4 near-black center ba">
-
-        <div id="control" class="fr" onclick="stop_timer()">
-          <i id="stop" class="fa fa-stop-circle f1 mb4 fr red"
+        <div id="control" class="fr w-20" onclick="stop_timer()">
+          <i id="stop" class="fa fa-stop-circle 6rem mb4 fr red pr1"
            title="Stop Timer (End Task)"
-           style="font-size: 4em; margin-bottom:0em;"></i> <br />
-          <small class="fw1"> Stop Timer </small>
+           style="font-size: 5em; margin-bottom:0em;"></i> <br />
+          <small class="f5 dib fr"> Stop Timer </small>
         </div>
 
         <!-- current "active" timer/activity -->
-        <h1 id="timer" class="tc fw6 f1 mt2 mb0"
+        <h1 id="timer" class="tc fw6 f2 mt1 mb0 w-80"
           style="font-size: 3em;">00:00</h1>
 
-        <h2 id="estimate" class="tc fw3 f2 tracked-tight mt0">00:00</h1>
+        <h2 id="estimate" class="tc center fw3 f4 tracked-tight mt0 w-40">00:00</h1>
 
         <textarea name="description" id="description"
           class="input-reset tc f1 pa3 ba b--near-black w-100 bg-white br3 mv4"
@@ -48,14 +47,15 @@
           <i class="fa fa-arrow-up" aria-hidden="true"></i>
         </p>
       </div>
+
       <h1 id="timer" class="dn tc fw6 f3 ma4 black-50">Completed Tasks/Timers:</h1>
 
-      <div id="complete" class="mt2 fw1">
+      <div id="complete" class="ma2 fw1">
         <table class="collapse ba br2 b--black-10 pv2 ph2 w-100"  id="timers">
           <thead>
             <tr class="bg-near-black white pv3">
-              <th class="pv3 ph3 tl f3 fw6">Description</th>
-              <th class="tr f3 fw6 pv3 ph3">Time Taken</th>
+              <th class="pv3 ph3 tl f4 fw6">Description</th>
+              <th class="pv3 ph3 tc f4 fw6">Time Taken</th>
             </tr>
           </thead>
           <tbody>
@@ -77,16 +77,16 @@
     </div>
 
     <!-- inspired by: http://tachyons.io/components/forms/newsletter-subscription/index.html -->
-    <div class="mt5 bg-near-black center pa4 br2-ns ba b--black-10"
+    <div class="mt5 bg-near-black center pa2 br2-ns ba b--black-10"
       id="register">
-      <legend class="pa0 f3 mb3 white">
+      <legend class="pa0 f2 mb3 white">
         Save timer/tasks to email inbox:
       </legend>
       <div class="cf">
         <label class="clip" for="email-address">Email Address</label>
-        <input class="f1 input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-60-m w-75-l br2-ns br--left-ns br3 mr3"
+        <input class="f3 input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-60-m w-75-l br2-ns br--left-ns br3 mr3"
           placeholder="Your Email Address" type="email" name="email-address" value="" id="email-address">
-        <input class="f1 button-reset fl pv3 tc bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br bt bb br3 b--white bw2"
+        <input class="f1 button-reset fr pv3 tc bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br bt bb br3 b--white bw2"
         type="submit" value="Save" onclick="save_email()">
       </div>
       <p class="dn mt2 mb1 f1 light-pink" id="email-error-message">
@@ -102,5 +102,8 @@
         id="reset" title="Reset ALL Timers!" style="font-size: 3em;"></i>
     </footer>
 
+    <script src="elmo.js"></script> <!-- barebones Elm Architecture -->
+    <script src="app.js"></script> <!-- load "client" application  -->
+        <script src='https://rawgit.com/dwyl/faster/master/lib/client.js'></script>
   </body>
 </html>

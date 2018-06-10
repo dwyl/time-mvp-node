@@ -91,7 +91,8 @@ function seconds_remaining(start_time) {
   var now = Date.now();
   // var task_est = 25;
   var default_time_estimate = store.default_minutes_per_pomodoro * 60 * 1000;
-  return Math.floor((start_time + default_time_estimate - now) / 1000);
+  var rem = Math.floor((start_time + default_time_estimate - now) / 1000);
+  return rem > 0 ? rem : 0;
 }
 
 /**
@@ -246,7 +247,7 @@ function save_email() {
   }
 }
 
-function fadeIn(el) { // http://youmightnotneedjquery.com/?hn#fade_in
+function fadeIn (el) { // http://youmightnotneedjquery.com/?hn#fade_in
   el.style.opacity = 0;
   var last = +new Date();
   var tick = function() {
@@ -291,3 +292,6 @@ function reset_state() {
   window.location.reload();
   return false;
 }
+
+// Initialise the app by "mounting" it passing in MUV Object & "root" DOM node
+elmount(0, update, view, 'app');
