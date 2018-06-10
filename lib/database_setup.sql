@@ -3,7 +3,7 @@
 /* DROP SCHEMA public cascade; http://stackoverflow.com/a/13823560/1148249 */
 CREATE SCHEMA IF NOT EXISTS public;
 /* DROP DATABASE IF EXISTS test; */
-/* CREATE DATABASE test; */
+-- CREATE DATABASE test;
 /* create the people table */
 CREATE TABLE IF NOT EXISTS people (
   id SERIAL PRIMARY KEY,
