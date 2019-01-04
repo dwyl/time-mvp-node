@@ -15,7 +15,7 @@ function create_tables (callback) {
       console.log('- - - - - - - - - - - - - - - - - - - ');
       assert(!err); // "die" if we cannot connect to the database!
     }
-    var file = require('path').resolve('./lib/database_setup.sql');
+    var file = require('path').resolve('./server/database_setup.sql');
     var query = require('fs').readFileSync(file, 'utf8').toString();
     // console.log('\n', query);
     client.query(query, function(err, result) {
