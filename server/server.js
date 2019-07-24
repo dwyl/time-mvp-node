@@ -1,3 +1,4 @@
+require('env2')('.env'); // see: https://github.com/dwyl/env2
 var http = require('http');
 var handlers = require('./request_handlers.js');
 
