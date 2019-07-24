@@ -91,8 +91,9 @@ create an `.env` file in root of the project
 and add a line for your `DATABASE_URL`.
 e.g:
 ```sh
+export PORT=4000
 export DATABASE_URL=postgres://postgres:@localhost/test
-export TEMPLATE_DIRECTORY=./lib/email_templates
+export TEMPLATE_DIRECTORY=./server/email_templates
 export SENDER_EMAIL_ADDRESS=your.aws.verified.email.address@gmail.com
 export AWS_REGION=eu-west-1
 export AWS_ACCESS_KEY_ID=YOURKEY
