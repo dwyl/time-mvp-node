@@ -294,4 +294,4 @@ function reset_state() {
 }
 
 // Initialise the app by "mounting" it passing in MUV Object & "root" DOM node
-elmount(0, update, view, 'app');
+// elmount(0, update, view, 'app');
